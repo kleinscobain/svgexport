@@ -12,12 +12,12 @@ var resize = require('./resize');
 
 module.exports.renderSvg = renderSvg;
 
-async function renderSvg(commands, done, stdout) {
+async function renderSvg(commands, done, stdout, browser) {
 
   // Make sure the commands var is an array.
   commands = Array.isArray(commands) ? commands : [ commands ];
 
-  var browser = await puppeteer.launch({
+  browser ||= await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox', '--font-render-hinting=none']
   });
