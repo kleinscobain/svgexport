@@ -42,7 +42,7 @@ function cli(args) {
   console.error('Error: Invalid usage!');
 }
 
-async function render(data, done) {
+async function render(data, done, browser) {
 
   var stdio = done;
 
@@ -117,7 +117,7 @@ async function render(data, done) {
     });
   });
 
-  await renderImpl.renderSvg(commands, done, stdout);
+  await renderImpl.renderSvg(commands, done, stdout, browser);
 }
 
 function noop() {
