@@ -5,7 +5,6 @@
  * @license
  */
 
-var puppeteer = require("puppeteer");
 var async = require('async');
 var path = require('path');
 var resize = require('./resize');
@@ -16,11 +15,6 @@ async function renderSvg(commands, done, stdout, browser) {
 
   // Make sure the commands var is an array.
   commands = Array.isArray(commands) ? commands : [ commands ];
-
-  browser = browser || await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--font-render-hinting=none']
-  });
 
   // Run each command in parallel.
   await async.each(commands, async function(cmd) {
